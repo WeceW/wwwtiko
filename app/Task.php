@@ -18,4 +18,9 @@ class Task extends Model
         return $this->belongsToMany(Tasklist::class);
     }
 
+    public function sessionTask()
+    {
+        return $this->hasMany(SessionTask::class);
+    }
+
 }

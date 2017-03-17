@@ -13,6 +13,11 @@ return [
     |
     */
 
+    'start_with_sql_command' => 'Kyselyn tulee alkaa komennoilla SELECT, INSERT, UPDATE tai DELETE.',
+    'even_brackets'          => 'Tulee olla parillinen määrä sulkeita.',
+    'semicolon_at_end'       => 'Kyselyn tulee päättyä puolipisteeseen',
+    'semicolon_max'          => 'Kyselyssä voi olla vain yksi puolipiste',
+
     'accepted'             => 'The :attribute must be accepted.',
     'active_url'           => 'The :attribute is not a valid URL.',
     'after'                => 'The :attribute must be a date after :date.',
