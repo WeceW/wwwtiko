@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class TasksFormRequest extends Request
+class SessionTasksFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,6 @@ class TasksFormRequest extends Request
     public function authorize()
     {
         return auth()->check();
-        #return true;
     }
 
     /**
@@ -25,9 +24,7 @@ class TasksFormRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|min:2',
-            'solution' => 'required|start_with_sql_command|even_brackets|semicolon_at_end|semicolon_max:1',
-            'type' => 'required',
+            'userQuery' => 'required|start_with_sql_command|even_brackets|semicolon_at_end|semicolon_max:1'
         ];
     }
 }

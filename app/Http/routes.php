@@ -20,9 +20,11 @@ Route::post('/my-account/edit/{user}', 'AccountController@update');
 Route::post('/my-account/delete/{user}', 'AccountController@destroy');
 Route::get('/my-account', 'AccountController@index');
 
-Route::post('/session/store/{tasklist_id}', 'SessionsController@store');
-Route::get('/session/{session_id}/{task_id}', 'SessionTasksController@index');
-Route::post('/session/{session_id}/{task_id}/store', 'SessionTasksController@store');
+Route::post('/session/start/{tasklist_id}', 'SessionsController@startSession');
+Route::get('/session/{session_id}/summary', 'SessionsController@summary');
+Route::get('/session/{session_id}/{task_id}', 'SessionsController@showTask');
+Route::get('/session/{session_id}/{task_id}/feedback', 'SessionsController@feedback');
+Route::post('/session/{session_id}/{task_id}/save', 'SessionsController@saveAttempt');
 
 Route::group(['middleware' => ['admin']], function() { 
     Route::get('/users', 'UsersController@index');

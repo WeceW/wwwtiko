@@ -13,7 +13,7 @@
 
             <div class="panel-body">
 
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('/session')}}/{{$session->id}}/{{$task->id}}/store">
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('/session')}}/{{$session->id}}/{{$task->id}}/save">
                     {{ csrf_field() }}
 
                     <div class="form-group">

@@ -18,7 +18,7 @@
                             <span class="pull-right" style="color: #999; font-size: 90%;">Tekijä: {{ App\User::find($tasklist->creator)->name}}</span><br>
                             <span class="pull-right" style="color: #999; font-size: 90%;">Julkaistu: {{ $tasklist->created_at->toDateString()}}</span><br>
                         </p>
-                        <form class="form-horizontal" role="form" method="POST" action="{{url('/session/store')}}/{{$tasklist->id}}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{url('/session/start')}}/{{$tasklist->id}}">
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-sm btn-primary">Aloita</button>
                         </form>

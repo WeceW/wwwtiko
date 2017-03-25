@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        View::composer('session.task', function($view) {
+        View::composer(['session.task', 'session.feedback'], function($view) {
             $opiskelijat = DB::connection('pgsql2')->select('select * from opiskelijat');
             $kurssit = DB::connection('pgsql2')->select('select * from kurssit');
             $suoritukset = DB::connection('pgsql2')->select('select * from suoritukset');
