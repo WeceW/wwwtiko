@@ -53,10 +53,10 @@
                 <hr>
 
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <a href="{{ url('/my-account/edit') }}/{{ auth()->user()->id}}" class="btn btn-primary">Muokkaa tietoja</a>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-9">
                         <form class="form" role="form" method="POST" action="{{ url('/my-account/delete') }}/{{ auth()->user()->id}}">
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-default">Poista käyttäjätili</button>

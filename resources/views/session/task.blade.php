@@ -8,7 +8,7 @@
 
             <div class="panel-heading">{{$task->name}} 
                 <small>(yritys {{ $taskAttempt->count}}/3)</small>
-                <span class="pull-right">({{$currentTaskNo}}/{{$taskCount}})</span>
+                <small class="pull-right">Tehtävä {{$currentTaskNo}}/{{$taskCount}}</small>
             </div>
 
             <div class="panel-body">

@@ -20,6 +20,10 @@ class TasklistsTableSeeder extends Seeder
         $tasklist->save();
         $tasklist->tasks()->attach([1,2,3]);
 
+        for ($i = 0; $i < rand(0,5); $i++) {
+            $tasklist->comments()->save( factory('App\Comment', 1)->create() );
+        }
+
         $tasklist = new Tasklist([
             'name' => 'Kyselysarja 2',
             'description' => 'Sarja sisältää tehtävät 1, 4 ja 5',
@@ -27,5 +31,9 @@ class TasklistsTableSeeder extends Seeder
         ]);
         $tasklist->save();
         $tasklist->tasks()->attach([1,4,5]);
+
+        for ($i = 0; $i < rand(0,5); $i++) {
+            $tasklist->comments()->save( factory('App\Comment', 1)->create() );
+        }
     }
 }

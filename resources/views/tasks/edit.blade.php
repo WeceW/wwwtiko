@@ -3,6 +3,12 @@
 @section('content')
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="{{url('/tasks')}}">Tehtävät</a></li>
+            <li><a href="{{url('/tasklists')}}">Tehtävälistat</a></li>
+        </ul>
+        
         <div class="panel panel-default">
 
             <div class="panel-heading">Muokkaa tehtävää</div>

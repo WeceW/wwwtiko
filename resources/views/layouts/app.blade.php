@@ -1,10 +1,10 @@
 @include('layouts.header')
 
-<body id="app-layout">
+<body>
     
 @include('layouts.navi')
 
-<div class="container">
+<div class="container" id="app">
     @include('layouts.statusmsg')
     @yield('content')
 </div>

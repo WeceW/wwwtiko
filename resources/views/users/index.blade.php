@@ -60,14 +60,6 @@
                     </tbody>
                 </table>
 
-                <hr>
-
-                <div class="row">
-                    <div class="col-md-2">
-                        <a href="{{ url('/users/create') }}" class="btn btn-primary">Lisää uusi tehtävä</a>
-                    </div>
-                </div>
-
             </div>  
 
         </div>

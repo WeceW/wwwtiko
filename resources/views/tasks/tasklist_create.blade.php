@@ -6,7 +6,7 @@
     
         <ul class="nav nav-tabs">
             <li><a href="{{url('/tasks')}}">Tehtävät</a></li>
-            <li><a href="{{url('/tasklists')}}">Tehtävälistat</a></li>
+            <li class="active"><a href="{{url('/tasklists')}}">Tehtävälistat</a></li>
         </ul>
 
         <div class="panel panel-default">

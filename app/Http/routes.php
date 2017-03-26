@@ -22,9 +22,9 @@ Route::get('/my-account', 'AccountController@index');
 
 Route::post('/session/start/{tasklist_id}', 'SessionsController@startSession');
 Route::get('/session/{session_id}/summary', 'SessionsController@summary');
-Route::get('/session/{session_id}/{task_id}', 'SessionsController@showTask');
-Route::get('/session/{session_id}/{task_id}/feedback', 'SessionsController@feedback');
-Route::post('/session/{session_id}/{task_id}/save', 'SessionsController@saveAttempt');
+Route::get('/session/{session_id}/{task}', 'SessionsController@showTask');
+Route::get('/session/{session_id}/{task}/feedback', 'SessionsController@feedback');
+Route::post('/session/{session_id}/{task}/save', 'SessionsController@saveAttempt');
 
 Route::group(['middleware' => ['admin']], function() { 
     Route::get('/users', 'UsersController@index');
@@ -52,3 +52,9 @@ Route::group(['middleware' => ['teacher']], function() {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+// Route::group ?? esim. auth (delete vain adminille)
+Route::get('/comments/{id}', 'CommentsController@index');
+Route::delete('/comments/{id}', 'CommentsController@delete');
+Route::post('/tasklists/{id}/comments', 'CommentsController@save');
+

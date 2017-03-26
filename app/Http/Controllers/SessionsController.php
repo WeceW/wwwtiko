@@ -84,6 +84,8 @@ class SessionsController extends Controller
 
         DB::commit();
 
+        $currentTaskNo  = SessionTask::where('session_id', $session_id)->count();
+
         return view('session.task', compact('session', 'task', 'taskCount', 'currentTaskNo', 'taskAttempt'));
     }
 

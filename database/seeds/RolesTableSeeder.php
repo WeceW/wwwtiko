@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Permission;
+use App\Role;
+
 
 class RolesTableSeeder extends Seeder
 {
@@ -12,58 +15,24 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
 
-        /* 
-         * Roles
-         */
-        DB::table('roles')->insert([ 
-            'name' => 'admin',
-            'label' => 'Admin',
-        ]);
+        $roleAdmin      = new Role(['name' => 'admin',   'label' => 'Admin']);
+        $roleTeacher    = new Role(['name' => 'teacher', 'label' => 'Teacher']);
+        $roleUser       = new Role(['name' => 'user',    'label' => 'Basic user']);
 
-        DB::table('roles')->insert([ 
-            'name' => 'teacher',
-            'label' => 'Teacher',
-        ]);
+        $roleAdmin->save();
+        $roleTeacher->save();
+        $roleUser->save(); 
+        
+        $permUsers      = new Permission(['name' => 'manage-users',     'label' => 'Can manage users']);
+        $permTasks      = new Permission(['name' => 'manage-tasks',     'label' => 'Can manage tasks']);
+        $permComments   = new Permission(['name' => 'manage-comments',  'label' => 'Can manage comments']);
 
-        DB::table('roles')->insert([ 
-            'name' => 'user',
-            'label' => 'Basic user',
-        ]);
+        $permUsers->save(); 
+        $permTasks->save(); 
+        $permComments->save(); 
 
+        $roleAdmin->permissions()->attach([$permTasks->id, $permUsers->id, $permComments->id]);
+        $roleTeacher->permissions()->attach([$permTasks->id, $permComments->id]);
 
-        /* 
-         * Permissions
-         */
-        DB::table('permissions')->insert([ 
-            'name' => 'manage-tasks',
-            'label' => 'Can manage tasks',
-        ]);
-
-        DB::table('permissions')->insert([ 
-            'name' => 'manage-users',
-            'label' => 'Can manage users',
-        ]);
-
-        /*
-         * Pivot tables
-         */
-
-        // Admin can manage tasks
-        DB::table('permission_role')->insert([ 
-            'permission_id' => 1,
-            'role_id' => 1,
-        ]);
-
-        // Admin can manage users
-        DB::table('permission_role')->insert([ 
-            'permission_id' => 2,
-            'role_id' => 1,
-        ]);
-
-        // Teacher can manage tasks
-        DB::table('permission_role')->insert([ 
-            'permission_id' => 1,
-            'role_id' => 2,
-        ]);
     }
 }

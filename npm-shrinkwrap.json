@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "vue": {
+      "version": "2.2.4",
+      "from": "vue@>=2.1.10 <3.0.0",
+      "resolved": "https://registry.npmjs.org/vue/-/vue-2.2.4.tgz"
+    }
+  }
+}

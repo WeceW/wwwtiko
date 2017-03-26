@@ -18,4 +18,14 @@ class Tasklist extends Model
         return $this->belongsToMany(Task::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function addComment($body)
+    {
+        $this->comments()->create(['body' => $body]);
+    }
+
 }
