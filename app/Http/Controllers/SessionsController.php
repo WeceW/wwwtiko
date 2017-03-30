@@ -16,6 +16,7 @@ use DB;
 
 class SessionsController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -57,7 +58,10 @@ class SessionsController extends Controller
     {
         extract($this->getSessionInfo($session_id, $task_id));   
 
-        DB::beginTransaction();
+        $errors = \Illuminate\Support\Facades\Session::get('errors');
+        if (!isset($errors)) {
+            
+            DB::beginTransaction();
 
             $taskAttempt = TaskAttempt::create([
                 'count' => (($attempts < 3) ? ($attempts + 1) : 1),
@@ -74,7 +78,8 @@ class SessionsController extends Controller
                 ]);
             }
 
-        DB::commit();
+            DB::commit();
+        }
 
         $currentTaskNo  = SessionTask::where('session_id', $session_id)->count();
 
