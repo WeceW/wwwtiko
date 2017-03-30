@@ -8,3 +8,4 @@ public/
 composer.phar
 .DS_Store
 footer.blade.php
+resources/views/layouts/footer.blade.php
