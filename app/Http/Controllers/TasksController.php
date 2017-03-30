@@ -10,6 +10,10 @@ use DB;
 
 class TasksController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('teacher');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -56,18 +60,6 @@ class TasksController extends Controller
         DB::commit();
 
         return redirect('/tasks')->with('status', "Tehtävä nro {$task->id} lisätty onnistuneesti.");
-        #return back()->with('status', 'Tehtävä lisätty!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -93,11 +85,11 @@ class TasksController extends Controller
     {
         $task = Task::find($id);
 
-        if($request->name == $task->name &&
-           $request->description == $task->description &&
-           $request->solution == $task->solution &&
-           $request->type == $task->type &&
-           $request->diagram == $task->diagram) 
+        if($request->name == $task->name
+           && $request->description == $task->description
+           && $request->solution == $task->solution
+           && $request->type == $task->type
+           && $request->diagram == $task->diagram) 
         {
             return back()->with('status', 'Ei mitään muutettavaa.');
         }
@@ -107,7 +99,6 @@ class TasksController extends Controller
         $task->solution = $request->solution;
         $task->type = $request->type;
         $task->diagram = $request->diagram;
-
         $task->save();
 
         return redirect('/tasks')->with('status', "Tehtävän nro {$task->id} päivitys onnistui.");

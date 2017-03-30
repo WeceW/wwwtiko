@@ -16,6 +16,11 @@ use DB;
 
 class SessionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,17 +28,9 @@ class SessionsController extends Controller
      */
     public function index()
     {
-        
-    }
+        $tasklists = Tasklist::all()->sortBy('id');
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('home', compact('tasklists'));
     }
 
     /**
@@ -45,7 +42,7 @@ class SessionsController extends Controller
     public function startSession($tasklist_id)
     {
         $session = Session::create([
-            'start_time' => \Carbon\Carbon::now(),
+            'start_time' => Carbon::now(),
             'user_id' => auth()->user()->id,
             'tasklist_id' => $tasklist_id,
         ]);
@@ -55,12 +52,7 @@ class SessionsController extends Controller
         return redirect("/session/{$session->id}/{$task_id}");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $session_id, $task_id
-     * @return \Illuminate\Http\Response
-     */
+
     public function showTask($session_id, $task_id)
     {
         extract($this->getSessionInfo($session_id, $task_id));   
@@ -135,16 +127,6 @@ class SessionsController extends Controller
                                                 'result', 'exampleResult', 'queryExc'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

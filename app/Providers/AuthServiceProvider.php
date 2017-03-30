@@ -27,7 +27,6 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies($gate);
 
         $gate->define('manage-tasks', function ($user) {
-
             foreach($user->roles as $role) 
                 if ($role->permissions->pluck('name')->contains('manage-tasks')) 
                     return true;
@@ -36,9 +35,16 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         $gate->define('manage-users', function ($user) {
-            
             foreach($user->roles as $role) 
                 if ($role->permissions->pluck('name')->contains('manage-users')) 
+                    return true;
+
+            return false;
+        });
+
+        $gate->define('manage-comments', function ($user) {
+            foreach($user->roles as $role) 
+                if($role->permissions->pluck('name')->contains('manage-comments'))
                     return true;
 
             return false;

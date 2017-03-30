@@ -15,16 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/my-account/edit/{user}', 'AccountController@edit');
-Route::post('/my-account/edit/{user}', 'AccountController@update');
-Route::post('/my-account/delete/{user}', 'AccountController@destroy');
-Route::get('/my-account', 'AccountController@index');
+Route::group(['middleware' => ['auth']], function() { 
+    Route::get('/my-account/edit/{user}', 'AccountController@edit');
+    Route::post('/my-account/edit/{user}', 'AccountController@update');
+    Route::post('/my-account/delete/{user}', 'AccountController@destroy');
+    Route::get('/my-account', 'AccountController@index');
 
-Route::post('/session/start/{tasklist_id}', 'SessionsController@startSession');
-Route::get('/session/{session_id}/summary', 'SessionsController@summary');
-Route::get('/session/{session_id}/{task}', 'SessionsController@showTask');
-Route::get('/session/{session_id}/{task}/feedback', 'SessionsController@feedback');
-Route::post('/session/{session_id}/{task}/save', 'SessionsController@saveAttempt');
+    Route::post('/session/start/{tasklist_id}', 'SessionsController@startSession');
+    Route::get('/session/{session_id}/summary', 'SessionsController@summary');
+    Route::get('/session/{session_id}/{task}', 'SessionsController@showTask');
+    Route::get('/session/{session_id}/{task}/feedback', 'SessionsController@feedback');
+    Route::post('/session/{session_id}/{task}/save', 'SessionsController@saveAttempt');
+
+    Route::get('/comments/{id}', 'CommentsController@index');
+    Route::post('/tasklists/{id}/comments', 'CommentsController@save');
+});
 
 Route::group(['middleware' => ['admin']], function() { 
     Route::get('/users', 'UsersController@index');
@@ -47,14 +52,10 @@ Route::group(['middleware' => ['teacher']], function() {
     Route::post('/tasklists/edit/{tasklist}', 'TasklistsController@update');
     Route::post('/tasklists/delete/{tasklist}', 'TasklistsController@destroy');
     Route::get('/tasklists', 'TasklistsController@index');
+
+    Route::delete('/comments/{id}', 'CommentsController@delete');
 });
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-
-// Route::group ?? esim. auth (delete vain adminille)
-Route::get('/comments/{id}', 'CommentsController@index');
-Route::delete('/comments/{id}', 'CommentsController@delete');
-Route::post('/tasklists/{id}/comments', 'CommentsController@save');
-
+Route::get('/home', 'SessionsController@index');

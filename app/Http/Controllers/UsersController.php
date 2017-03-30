@@ -13,7 +13,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     /**
@@ -26,38 +26,6 @@ class UsersController extends Controller
         $users = User::all()->sortBy('name');
 
         return view('users.index', compact('users'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -85,17 +53,18 @@ class UsersController extends Controller
     {
         $user = User::find($id);
 
-        /* Tähän tarkistukseen pitäisi saada myös roolit lisättyä, 
-           mutta ehkä tällaisen tarkastelun voi jättää tekemättäkin
-           kun ei varsinaista ongelmaakaan seuraa...
+        /* En saanut tähän tarkistukseen rooleja järkevästi mukaan, joten tämä nyt 
+           kokonaan pois käytöstä. (vrt. esim TasksController@update, jossa toiminto on käytössä)
+           "Päivitetään" siis tiedot ns. turhaan vaikka mitään ei muuttuisikaan.
 
-        if($request->name == $user->name &&
-           $request->student_nro == $user->student_nro &&
-           $request->major == $user->major &&
+        if ($request->name == $user->name
+           && $request->student_nro == $user->student_nro
+           && $request->major == $user->major)
+           #&& $request->roles == $user->roles)
         {
             return back()->with('status', 'Ei mitään muutettavaa');
         }
-        */ 
+        */
 
         $user->name = $request->name;
         $user->student_nro = $request->student_nro;

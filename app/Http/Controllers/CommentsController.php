@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests;
 use App\Tasklist;
 use App\Comment;
@@ -17,35 +18,38 @@ class CommentsController extends Controller
 
     public function save($tasklist_id, Request $request)
     {
-            $this->validate($request, [
-                'body' => 'required'
-            ]);
+        $this->validate($request, [
+            'body' => 'required'
+        ]);
+        
+        $tasklist = Tasklist::find($tasklist_id);
+        $comment = $tasklist->addComment($request->body);
 
-            $tasklist = Tasklist::find($tasklist_id);
-            $tasklist->addComment($request->body);
+        if($request->wantsJson()) {
+            return response(['Kommentti lisätty.', $comment], 200);
+        }
 
-            if($request->wantsJson()) {
-                return response('Kommentti lisätty.', 200);
-            }
-
-            return back()->with('status', 'Kommentti lisätty');
+        return back()->with('status', 'Kommentti lisätty');
     }
 
     public function delete($id, Request $request)
     {
-        /*if(Gate::denies('remove-comment', $id)) {
-            $message = 'You don\'t have the necessary role to do that';
+        if(Gate::denies('manage-comments', $id)) {
+            $message = 'Sinulla ei ole riittäviä oikeuksia.';
             if($request->wantsJson()) {
                 return response($message, 403);
             }
             return back()
                 ->with('status', $message);
-        }*/
+        }
+
         Comment::destroy($id);
+
         $message = 'Kommentti poistettu.';
         if($request->wantsJson()) {
             return response($message, 200);
         }
+
         return back()
             ->with('status', $message);
     }

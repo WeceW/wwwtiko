@@ -16,9 +16,9 @@
         ]) !!};
     </script>
 
-    <!-- <script src="/js/vendor.js"></script> -->
     <script src="{{ elixir('js/app.js') }}"></script> 
-    
+    <!-- <script src=”js/app.js”></script> --> <!-- Käytä tätä UTAn päässä -->
+
     
 </body>
 </html>
