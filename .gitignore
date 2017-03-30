@@ -7,3 +7,4 @@ Homestead.json
 public/
 composer.phar
 .DS_Store
+footer.blade.php
