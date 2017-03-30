@@ -47,10 +47,12 @@
                             
                             <hr>
 
+                            <!-- TIKO-KURSSIN HARJOITUSTYÖHÖN LIITTYVÄT RAPORTIT VIELÄ TYÖN ALLA 
                             @can('manage-tasks')
                                 <li><a href="{{ url('/reports') }}"><i class=""></i>Raportit</a></li>
                                 <hr>
-                            @endcan
+                            @endcan 
+                            -->
                             
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Kirjaudu ulos</a></li>
                         </ul>

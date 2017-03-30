@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     {
         $admin = new User([
             'name' => 'Admin',
-            'student_nro' => 0000,
+            'student_nro' => 0,
             'major' => '',
             'password' => bcrypt('admin'),
         ]);
@@ -24,8 +24,8 @@ class UsersTableSeeder extends Seeder
         $admin->roles()->attach(\App\Role::where('name', 'user')->get()->first()->id);
         
         $user = new User([
-            'name' => 'Toni',
-            'student_nro' => 422666,
+            'name' => 'Ope',
+            'student_nro' => 1111,
             'major' => 'TKT',
             'password' => bcrypt('salasana'),
         ]);
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
         $user->roles()->attach(\App\Role::where('name', 'teacher')->get()->first()->id);
 
         $user = new User([
-            'name' => 'User',
+            'name' => 'Opiskelija',
             'student_nro' => 1234,
             'major' => 'TKT',
             'password' => bcrypt('salasana'),

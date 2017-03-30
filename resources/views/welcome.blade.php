@@ -5,10 +5,10 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
 
-            <div class="panel-heading">Welcome</div>
+            <div class="panel-heading">Tervetuloa</div>
 
             <div class="panel-body">
-                Your Application's Landing Page.
+                Kirjaudu sisään tai rekisteröidy käyttääksesi sovellusta.
             </div>
 
         </div>
