@@ -17,7 +17,7 @@
     </script>
 
     <script src="{{ elixir('js/app.js') }}"></script> 
-    <!-- <script src=”js/app.js”></script> --> <!-- Käytä tätä UTAn päässä -->
+    <!--  <script src=”js/app.js”></script> --> <!-- Käytä tätä UTAn päässä -->
 
     
 </body>
