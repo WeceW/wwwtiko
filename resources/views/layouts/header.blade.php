@@ -28,11 +28,13 @@ body {
     font-family: 'Lato';
 
     height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background: #222; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#333, #000); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#333, #000); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#333, #000); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#333, #000); /* Standard syntax */
+    background: -webkit-linear-gradient(#333, #000) fixed; /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#333, #000) fixed; /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#333, #000) fixed; /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#333, #000) fixed; /* Standard syntax */
 }
 
 div .panel {
