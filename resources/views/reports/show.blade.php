@@ -42,7 +42,7 @@
             </div>
 
             <div class="panel-footer">
-                <a href="/reports" class="col-md-10">Takaisin</a><br>
+                <a href="{{url('/reports')}}" class="col-md-10">Takaisin</a><br>
                 <small class="pull-right">...</small>
             </div>
 
