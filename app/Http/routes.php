@@ -54,6 +54,9 @@ Route::group(['middleware' => ['teacher']], function() {
     Route::get('/tasklists', 'TasklistsController@index');
 
     Route::delete('/comments/{id}', 'CommentsController@delete');
+
+    Route::get('/reports', 'ReportsController@index');
+    Route::get('/reports/{id}', 'ReportsController@show');
 });
 
 Route::auth();

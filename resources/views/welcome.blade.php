@@ -8,7 +8,11 @@
             <div class="panel-heading">Tervetuloa</div>
 
             <div class="panel-body">
-                Kirjaudu sisään tai rekisteröidy käyttääksesi sovellusta.
+                Tampereen yliopisto<br>
+                www-ohjelmointi / Tietokantaohjelmointi<br>
+                Harjoitustyö<br><br>
+
+                Toni Weckroth<br>
             </div>
 
         </div>

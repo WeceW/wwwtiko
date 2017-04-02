@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('/home') }}">Etusivu</a></li>
+                <li><a href="{{ url('/home') }}">Tehtävät</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -47,12 +47,12 @@
                             
                             <hr>
 
-                            <!-- TIKO-KURSSIN HARJOITUSTYÖHÖN LIITTYVÄT RAPORTIT VIELÄ TYÖN ALLA 
+                            <!-- TIKO-KURSSIN HARJOITUSTYÖHÖN LIITTYVÄT RAPORTIT VIELÄ TYÖN ALLA  -->
                             @can('manage-tasks')
                                 <li><a href="{{ url('/reports') }}"><i class=""></i>Raportit</a></li>
                                 <hr>
                             @endcan 
-                            -->
+                            
                             
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Kirjaudu ulos</a></li>
                         </ul>
