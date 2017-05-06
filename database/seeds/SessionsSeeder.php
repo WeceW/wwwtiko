@@ -21,7 +21,7 @@ class SessionsSeeder extends Seeder
         # Luodaan silmukan avulla x-määrä sessioita tietokantaan
         # (Tämä tietysti vain esimerkkidatan vuoksi, eli varsinaisessa sovelluksessa
         # ei sessioita tietysti valmiiksi luotaisi tilastoja vääristämään)
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 100; $i++) {
 
             $date = Carbon::now()->subDays(mt_rand(1,31));
 
