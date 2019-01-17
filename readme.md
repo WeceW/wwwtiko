@@ -1,3 +1,16 @@
+# wwwtiko
+
+Tampereen yliopiston www-ohjelmointi ja Tietokantaohjelmointi -kurssien yhteinen harjoitustyö. 
+
+Web-sovellus, joka tukee eri käyttäjäryhmiä erilaisine oikeuksineen (ylläpito, opettaja, oppilas...). Oppilas syöttää SQL-kyselyitä opettajan määrittelemiin kysymyksiin ja järjestelmä tarkistaa syötetyn kyselyn oikeellisuuden automaattisesti. Opettaja voi lisätä/poistaa/muokata järjestelmässä olevia tehtäviä, sekä tarkastella raportteja ja tilastoja opiskelijoiden suorituksista. Opiskelija voi tarkastella omia suorituksiaan. Ylläpidolla luonnollisesti edellisiä laajemmat oikeudet.
+
+Käytettyjä tekniikoita:
+* PHP
+* JavaScript (mm. Vue)
+* SQL
+* Laravel PHP Framework
+
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
